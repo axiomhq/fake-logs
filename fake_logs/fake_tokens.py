@@ -39,10 +39,12 @@ class FakeTokens:
 		return self.dispatcher[token]()
 
 	def inc_date(self):
-		sleep = self.sleep if self.sleep is not None else random.randint(30, 300)
-		increment = datetime.timedelta(seconds=sleep)
-		self.otime += increment
-		return self.otime
+		if self.sleep is not None:
+			increment = datetime.timedelta(seconds=self.sleep)
+			self.otime += increment
+			return self.otime
+		sleep = random.randint(0, 90*24*60*60)
+		return self.otime - datetime.timedelta(seconds=sleep)
 
 
 	# ----------------------------------------------
