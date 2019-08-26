@@ -43,9 +43,9 @@ class FakeTokens:
 			increment = datetime.timedelta(seconds=self.sleep)
 			self.otime += increment
 			return self.otime
-		sleep = random.randint(0, 90*24*60*60)
-		return self.otime - datetime.timedelta(seconds=sleep)
-
+		sleep = random.randint(0, 1)
+		self.otime -= datetime.timedelta(seconds=sleep)
+		return self.otime
 
 	# ----------------------------------------------
 
